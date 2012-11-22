@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>ngai</artifactId>
+		<groupId>com.siberhus.ngai</groupId>
+		<version>0.9</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.siberhus.ngai</groupId>
+	<artifactId>ngai-core</artifactId>
+	<version>0.9</version>
+	
+	
+	
+	<build>
+		
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		
+		<plugins>
+			<!-- 
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.0-beta-3</version>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>create</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<doCheck>true</doCheck>
+					<doUpdate>true</doUpdate>
+				</configuration>
+			</plugin>
+			-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+						<!-- 
+						<manifestEntries>
+							<Implementation-Build>${buildNumber}</Implementation-Build>
+						</manifestEntries>
+						 -->
+					</archive>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+</project>

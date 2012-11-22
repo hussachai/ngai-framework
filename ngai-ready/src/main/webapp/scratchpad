@@ -1,0 +1,27 @@
+
+<ng:securedLink uri="" beanclass="" event="">
+	<ng:param name="" value=""/>
+</ng:securedLink>
+
+<ng:hasPermission uri="/action/admin/aaa" beanclass="" event="edit">
+	some link or button
+</ng:hasPermission>
+
+<ng:lacksPermission uri="/action/admin/aaa" beanclass="" event="edit">
+	some link or button
+</ng:lacksPermission>
+
+<ng:hasRole name="admin">
+</ng:hasRole>
+
+<ng:hasAnyRoles name="ceo,cio,cto">
+</ng:hasAnyRoles>
+
+<ng:lacksRole name="guest">
+</ng:lackRole>
+
+<ng:authenticated></ng:authenticated>
+
+<ng:notAuthenticated></ng:notAuthenticated>
+
+

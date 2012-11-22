@@ -1,0 +1,51 @@
+
+.defaultBg {
+	margin: 0;
+	background: #5C9E1F url(../images/bg/default.jpg);
+}
+
+.container {background-color: white;}
+#accordion label {
+	display: inline-block;	
+	vertical-align: baseline;
+	cursor: hand;
+	width: 70px;
+}
+.redColor{
+	color: red;
+}
+.blueColor{
+	color: blue;
+}
+label.title{
+	font-size: 20pt;
+}
+form.cmxform label{ width: 130px; }
+form.cmxform input[type=text]{ width: 200px; }
+form.cmxform input[type=password]{ width: 200px; }
+form.cmxform select{ width: 150px; }
+
+form.cmxform div.col2 label{ width: 100px; }
+form.cmxform div.col2 input{ width: 140px; }
+form.cmxform div.col2 select{ width: 140px;}
+
+.devPanel{
+	background-color:  #4F4F4F; color: white; font-weight: bolder;
+}
+.devPanel a{
+	color: white;
+}
+.browserPanel{
+	border-style: dashed;border-color:#4F6F1B; border-width:1px; background-color: #DAFF9F; 
+	padding: 10px 10px 10px 10px;
+}
+.imgAccept{
+	padding-left: 20px;
+	background: url("../images/accept.png") no-repeat;
+}
+.imgCancel{
+	padding-left: 20px;
+	background: url("../images/cancel.png") no-repeat;
+	
+}
+

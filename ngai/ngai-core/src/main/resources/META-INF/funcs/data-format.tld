@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>Default Data Format</description>
+	<display-name>Default Data Format</display-name>
+	<tlib-version>2.4</tlib-version>
+	<short-name>df</short-name>
+	<uri>http://ngai.siberhus.com/ngai-core/funcs</uri>
+	
+	<function>
+		<name>formatDate</name>
+		<function-class>com.siberhus.ngai.util.DefaultDataFormat</function-class>
+		<function-signature>java.lang.String formatDate(java.util.Date) </function-signature>
+	</function>
+	<function>
+		<name>formatNumber</name>
+		<function-class>com.siberhus.ngai.util.DefaultDataFormat</function-class>
+		<function-signature>java.lang.String formatNumber(java.lang.Number) </function-signature>
+	</function>
+	<function>
+		<name>parseDate</name>
+		<function-class>com.siberhus.ngai.util.DefaultDataFormat</function-class>
+		<function-signature>java.util.Date parseDate(java.lang.String, java.lang.String) </function-signature>
+		<example>
+			${df:parseDate(data,typeName)}
+		</example>
+	</function>
+	<function>
+		<name>parseNumber</name>
+		<function-class>com.siberhus.ngai.util.DefaultDataFormat</function-class>
+		<function-signature>java.lang.Number parseNumber(java.lang.String, java.lang.String) </function-signature>
+		<example>
+			${df:parseNumber(data,typeName)}
+		</example>
+	</function>
+	
+</taglib>

@@ -1,0 +1,20 @@
+
+I prepend com.siberhus to the package name of stripesstuff because
+I would like to avoid class loading conflict when the users has already
+had stripersist.jar in their classpath.
+
+
+Changes in Stripersist
+=============================================
+
+ - Don't start transaction automatically 
+   1 transaction per 1 request is quite limit and 
+   cause a lower performance in read only statement
+   
+ - Remove static initializer block that show the build information
+ 
+ - Remove StripersistInit.Classes, Use NgaiInit.Packages instead.
+ 
+ - Add throws Exception in init(Configuration config) method.
+ 
+ 

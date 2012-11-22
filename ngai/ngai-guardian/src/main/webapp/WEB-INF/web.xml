@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<description>
+      Ngai Examples
+    </description>
+	<display-name>Ngai Examples</display-name>
+	
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	
+	<filter>
+		<filter-name>GuardianAccessFilter</filter-name>
+		<filter-class>com.siberhus.ngai.guardian.GuardianAccessFilter</filter-class>
+	</filter>
+	<filter-mapping>
+			<filter-name>GuardianAccessFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+			<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<filter>
+		<description>
+            Provides essential configuration and request processing services
+            for the Stripes framework.
+    	</description>
+		<display-name>Stripes Filter</display-name>
+		<filter-name>StripesFilter</filter-name>
+		<filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+		<init-param>
+			<param-name>ActionResolver.Packages</param-name>
+			<param-value>
+            	com.siberhus.ngai.example.action,
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>Extension.Packages</param-name>
+			<param-value>com.siberhus.ngai.stripes.extension</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Ngai.Properties</param-name>
+			<param-value>
+				core.defaultPersistenceUnit=example
+				#core.autoBeginTransaction=
+				#core.autoCommitTransaction=
+				#core.transationManager=[spring,bitronix,none]
+				
+				guardian.adminEmail=hussachai@oneempower.co.th
+				
+				guardian.jpa.persistenceUnitName=mCRM
+				guardian.jpa.userEntity=User
+				guardian.jpa.roleEntity=Role
+				
+				#Authentication
+				guardian.authentication.rootUser=root
+				guardian.authentication.rootPasswd=password
+				
+				#guardian.authentication.enabled=false
+				guardian.authentication.loginLogEnabled=true
+				guardian.authentication.passwdHashAlgo=SHA
+				guardian.authentication.loginPage=/pages/login.jsp
+				#guardian.authentication.rememberMeEnabled=true
+				guardian.authentication.multiSessionLoginEnabled=false
+				guardian.authentication.retryLimit=3
+				
+				#Authorization
+				#guardian.authorization.enabled=false
+				guardian.authorization.unauthorizedPage=/pages/login.jsp
+				#guardian.authorization.cacheEnabled=true
+				#guardian.authorization.regexEnabled=false
+				guardian.authorization.userLevelEnabled=true
+				guardian.authorization.roleLevelEnabled=true 
+				guardian.authorization.defaultAccessPolicy=ALLOW
+				
+				#Access Filter
+				#guardian.accessFilter.enabled=false
+				guardian.accessFilter.accessDeniedPage=/pages/accessdenied.jsp
+				#guardian.accessFilter.bannedResources=
+				#guardian.accessFilter.allowedResources=
+				#guardian.accessFilter.bannedAddresses=
+				#guardian.accessFilter.allowedAddresses=
+				#guardian.accessFilter.bannedUserAgents=
+				#guardian.accessFilter.allowedUserAgents=
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiExtension.Classes</param-name>
+			<param-value>
+				com.siberhus.ngai.guardian.GuardianNgaiComponent
+			</param-value>
+		</init-param>
+		<!-- 
+		<init-param>
+			<param-name>NgaiInit.Classes</param-name>
+			<param-value>
+				com.siberhus.ngai.example.DemoUserInit
+            </param-value>
+		</init-param>
+		 -->
+		<init-param>
+			<param-name>ServiceResolver.Packages</param-name>
+			<param-value>
+				
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>DaoResolver.Packages</param-name>
+			<param-value>
+				
+            </param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>Configuration.Class</param-name>
+			<param-value>net.sourceforge.stripes.config.RuntimeConfiguration</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Stripes.EncryptionKey</param-name>
+			<param-value>Don't Copy/Paste Me! Make up your own encryption key and keep it secret!</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PopulationStrategy.Class</param-name>
+			<param-value>net.sourceforge.stripes.tag.BeanFirstPopulationStrategy</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/dispatcher</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/action/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	<resource-ref>
+		<description>Example DataSource Reference</description>
+		<res-ref-name>jdbc/example</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+</web-app>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>Ngai Guardian Tags Library</description>
+	<display-name>Ngai Guardian Tags Library</display-name>
+	<tlib-version>2.4</tlib-version>
+	<short-name>auth</short-name>
+	<uri>http://ngai.siberhus.com/ngai-guardian/tags</uri>
+	
+	<tag>
+		<name>hasPermission</name>
+		<tag-class>com.siberhus.ngai.guardian.tags.HasPermissionTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Displays body content only if the current user 'has' (implies) 
+			the specified permission (i.e the user has the specified ability).
+    	</description>
+		<attribute>
+			<name>uri</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>event</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>lacksPermission</name>
+		<tag-class>com.siberhus.ngai.guardian.tags.LacksPermissionTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Displays body content only if the current user does NOT have (not imply) 
+			the specified permission (i.e the user has the specified ability).
+    	</description>
+		<attribute>
+			<name>uri</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>event</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>authenticated</name>
+		<tag-class>com.siberhus.ngai.guardian.tags.AuthenticatedTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Displays body content only if the current user has successfully authenticated
+			_during their current session_. It is logically opposite to the 'notAuthenticated' tag.
+    	</description>
+	</tag>
+	
+	<tag>
+		<name>notAuthenticated</name>
+		<tag-class>com.siberhus.ngai.guardian.tags.NotAuthenticatedTag</tag-class>
+		<body-content>JSP</body-content>
+		<description>
+			Displays body content only if the current user has NOT succesfully authenticated
+			_during their current session_. It is logically opposite to the 'authenticated' tag.
+		</description>
+	</tag>
+	
+</taglib>

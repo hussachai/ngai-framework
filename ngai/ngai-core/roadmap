@@ -1,0 +1,49 @@
+
+1.0
+- Transaction support both RESOURCE_LOCAL and JTA
+- Transaction demarcation
+- Service/DAO pooling ?
+
+1.5
+- Long run ActionBean with sandglass view
+- CSVResourceFactory
+- FileResourceFactory
+- XMLResourceFactory
+- MessageResourceFatory
+- BeanLifeCycle
+
+2.0
+- Integration with dynamic language such as Groovy, Jython, JRuby, Javascript, Beanshell
+- Dynamic Service/DAO - change without restarting server
+- Hessian support
+
+2.5
+- Web Service
+- JMS 
+
+
+
+#Ngia-Guardian
+- Authentication
+- Authorization (User,Role Permission)
+- AccessFilter
+
+#Ngai-UI
+- JQGridHandler
+- Better AJAX Support
+- Dynamic Menu
+#Ngai-Mail
+- Mail Service (MailResolution) render jsp as mail template and images/css attached in multipart email
+- Mass Mail Service
+#Ngai-BI
+- Integrated with Mondrian
+- Wega
+- Chart, Graph
+- Data mining
+- Report Jasper? , OpenReport?
+
+
+
+
+
+

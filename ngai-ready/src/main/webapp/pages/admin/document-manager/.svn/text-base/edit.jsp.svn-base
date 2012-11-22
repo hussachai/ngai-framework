@@ -1,0 +1,32 @@
+<%@ include file="/page-includes/commons.jsp" %>
+
+
+<s:layout-render name="/page-layouts/standard.jsp">
+	<s:layout-component name="title">
+		<h2>Login Failure</h2>
+		<h3>
+			<c:if test="${empty model.id}">New</c:if>
+			<c:if test="${not empty model.id}">Edit</c:if>
+		</h3>
+	</s:layout-component>
+    <s:layout-component name="content">
+		<s:form class="cmxform" name="mainForm" beanclass="${actionBeanFQCN}" method="post">
+			<s:hidden name="model.id"></s:hidden>
+			<fieldset>
+				<p>
+					<label for="ipAddress">IP Address: </label>
+					<s:text id="ipAddress" name="model.ipAddress"></s:text>
+				</p>
+				<p>
+					<label for="attemptCount">Attempt Count: </label>
+					<s:text id="attemptCount" name="model.attemptCount"></s:text>
+				</p>
+				<p>
+					<label for="lastAttemptAt">Last Attempt At: </label>
+					<s:text id="lastAttemptAt" name="model.lastAttemptAt"></s:text>
+				</p>
+			</fieldset>
+			<%@include file="/page-includes/edit-controls.jsp" %>
+		</s:form>
+	</s:layout-component>
+</s:layout-render>

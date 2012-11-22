@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	
+	<persistence-unit name="ngaiReady"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<!-- 
+		<non-jta-data-source/>
+		<jta-data-source/>
+		 -->
+		<class>com.siberhus.ngaiready.admin.model.TreeMenu</class>
+		<class>com.siberhus.ngaiready.admin.model.DocFileItem</class>
+		<class>com.siberhus.ngaiready.admin.model.DocFileType</class>
+		<!-- Guardian model -->
+		<class>com.siberhus.ngai.guardian.model.User</class>
+		<class>com.siberhus.ngai.guardian.model.Role</class>
+		<class>com.siberhus.ngai.guardian.model.AccessDeniedLog</class>
+		<class>com.siberhus.ngai.guardian.model.LoginFailureLog</class>
+		<class>com.siberhus.ngai.guardian.model.UserAuditLog</class>
+		<class>com.siberhus.ngai.guardian.model.LoginLog</class>
+		<class>com.siberhus.ngai.guardian.model.RolePermission</class>
+		<class>com.siberhus.ngai.guardian.model.UserPermission</class>
+		<!-- Localization model -->
+		<class>com.siberhus.ngai.localization.model.NgaiResourceBundle</class>
+		
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.dialect" value="com.siberhus.orm.hibernate.dialect.TableNameSequencePostgreSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver" />
+			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/ngai_ready" />
+			<property name="hibernate.connection.username" value="admin" />
+			<property name="hibernate.connection.password" value="password" />
+		</properties>
+		<!--
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />
+			<property name="hibernate.connection.driver_class" value="org.hsqldb.jdbcDriver" />
+			<property name="hibernate.connection.url" value="jdbc:hsqldb:file:db/ngai_ready.db" />
+			<property name="hibernate.connection.username" value="sa" />
+			<property name="hibernate.connection.password" value="" />
+		</properties>
+		  -->
+	</persistence-unit>
+</persistence>

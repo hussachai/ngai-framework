@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<description>
+		Ngai Skeleton - Launch new project quickly with the complete application
+    </description>
+	<display-name>Ngai Skeleton</display-name>
+	
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	<filter>
+		<filter-name>MeasurementFilter</filter-name>
+		<filter-class>com.siberhus.web.filter.performance.MeasurementFilter</filter-class>
+	</filter>
+	<filter-mapping>
+			<filter-name>MeasurementFilter</filter-name>
+			<url-pattern>/action/*</url-pattern>
+			<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 
+	<filter>
+		<filter-name>GuardianAccessFilter</filter-name>
+		<filter-class>com.siberhus.ngai.guardian.GuardianAccessFilter</filter-class>
+	</filter>
+	<filter-mapping>
+			<filter-name>GuardianAccessFilter</filter-name>
+			<url-pattern>/*</url-pattern>
+			<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	 -->
+	<filter>
+		<description>
+            Provides essential configuration and request processing services
+            for the Stripes framework.
+    	</description>
+		<display-name>Stripes Filter</display-name>
+		<filter-name>StripesFilter</filter-name>
+		<filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+		<init-param>
+			<param-name>Configuration.Class</param-name>
+			<param-value>com.siberhus.ngai.config.NgaiConfiguration</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Extension.Packages</param-name>
+			<param-value>
+				com.siberhus.ngai.localization,
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Ngai.Properties</param-name>
+			<param-value>
+				classpath:ngai.properties
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiBootstrap.Classes</param-name>
+			<param-value>
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiInterceptor.Classes</param-name>
+			<param-value>
+				com.siberhus.ngai.guardian.GuardianNgaiInterceptor,
+			</param-value>
+		</init-param>		
+		<init-param>
+			<param-name>ActionResolver.Packages</param-name>
+			<param-value>
+            	com.siberhus,
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>ServiceResolver.Packages</param-name>
+			<param-value>
+				com.siberhus,
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>DaoResolver.Packages</param-name>
+			<param-value>
+				com.siberhus,
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>Stripes.EncryptionKey</param-name>
+			<param-value>I_^->8->H$_vS0tuJ</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/action/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<servlet-class>
+			net.fckeditor.connector.ConnectorServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ConnectorServlet</servlet-name>
+		<!-- Do not wrap this line otherwise Glassfish will fail to load this file -->
+		<url-pattern>/fckeditor/editor/filemanager/connectors/*</url-pattern>
+	</servlet-mapping>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://ngai.siberhus.com/ngai-guardian/tags</taglib-uri>
+			<taglib-location>/META-INF/tags/ngai-guardian.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://ngai.siberhus.com/ngai-ui/tags</taglib-uri>
+			<taglib-location>/META-INF/tags/ngai-ui.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://ngai.siberhus.com/ngai-localization/tags</taglib-uri>
+			<taglib-location>/META-INF/tags/ngai-localization.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	<!-- 
+	<resource-ref>
+		<description>Example DataSource Reference</description>
+		<res-ref-name>jdbc/ngaiReady</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+	 -->
+	
+</web-app>
+

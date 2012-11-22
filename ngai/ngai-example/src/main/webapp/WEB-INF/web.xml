@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<description>
+      Ngai Examples
+    </description>
+	<display-name>Ngai Examples</display-name>
+	<session-config>
+		<session-timeout>10</session-timeout>
+	</session-config>
+	<filter>
+		<description>
+            Provides essential configuration and request processing services
+            for the Stripes framework.
+    	</description>
+		<display-name>Stripes Filter</display-name>
+		<filter-name>StripesFilter</filter-name>
+		<filter-class>net.sourceforge.stripes.controller.StripesFilter</filter-class>
+		<init-param>
+			<param-name>Configuration.Class</param-name>
+			<param-value>com.siberhus.ngai.config.NgaiConfiguration</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Extension.Packages</param-name>
+			<param-value>
+				com.siberhus.ngai.localization,
+				<!-- <param-value>com.siberhus.ngai.stripes.extension</param-value> -->
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Ngai.Properties</param-name>
+			<param-value>
+				classpath:ngai.properties
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiBootstrap.Classes</param-name>
+			<param-value>
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiInterceptor.Classes</param-name>
+			<param-value>
+				com.siberhus.ngai.guardian.GuardianNgaiInterceptor,
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>NgaiInit.Classes</param-name>
+			<param-value>
+				com.siberhus.ngai.example.DemoDataInit
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>ActionResolver.Packages</param-name>
+			<param-value>
+            	com.siberhus.ngai.example.group1,
+            	com.siberhus.ngai.example.group2,
+            	com.siberhus.ngai.example.login,
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>ServiceResolver.Packages</param-name>
+			<param-value>
+				com.siberhus.ngai.example.group1,
+				com.siberhus.ngai.example.group2
+            </param-value>
+		</init-param>
+		<init-param>
+			<param-name>DaoResolver.Packages</param-name>
+			<param-value>
+				com.siberhus.ngai.example.group1,
+				com.siberhus.ngai.example.group2
+            </param-value>
+		</init-param>
+		
+		<init-param>
+			<param-name>NgaiGuardian.Properties</param-name>
+			<param-value>
+				PASSWORD_HASH_ALGO	SHA
+				#PERMISSION_CACHE_ENABLED	true
+			 	#PERMISSION_REGEX_ENABLED	true/false (enabled regex in permission table both actionBeanName field and eventName field)
+			 	LOGIN_PAGE	/pages/login.jsp
+			 	#UNAUTHORIZED_URL	/pages/unauthorized.jsp //redirect
+			 	#REMEMBER_ME_ENABLED	true/false 
+			 	ALLOW_DUPLICATE_LOGIN	false
+			 	LOGIN_LOG_ENABLED	true
+			 	USER_ACTION_LOG_ENABLED	true
+			 	#BANNED_IP_ADDRESS	ipaddress (regex) separated by commas
+			 	#ALLOWED_IP_ADDRESS	ipaddress (regex) separated by commas
+			 	#BANNED_USER_AGENT	useragent separated by commas
+			 	#ALLOWED_USER_AGENT	useragent separated by commas
+			 	#LOGIN_RETRY_LIMIT	5 (disabled if not defined)
+			 	#ADMIN_EMAIL	admin@siberhus.com
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>Stripes.EncryptionKey</param-name>
+			<param-value>Don't Copy/Paste Me! Make up your own encryption key and keep it secret!</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PopulationStrategy.Class</param-name>
+			<param-value>net.sourceforge.stripes.tag.BeanFirstPopulationStrategy</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>StripesFilter</filter-name>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<servlet-class>net.sourceforge.stripes.controller.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/dispatcher</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>/action/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StripesDispatcher</servlet-name>
+		<url-pattern>*.action</url-pattern>
+	</servlet-mapping>
+	<resource-ref>
+		<description>Example DataSource Reference</description>
+		<res-ref-name>jdbc/example</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+</web-app>
